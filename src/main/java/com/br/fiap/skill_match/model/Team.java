@@ -3,13 +3,15 @@ package com.br.fiap.skill_match.model;
 public class Team {
     private int id;
     private String name;
-    private String status;
+    private TeamStatus status;
 
     // Construtor padrão
-    public Team() {}
+    public Team() {
+    }
 
     // Construtor
-    public Team(int id, String name, String status) {
+
+    public Team(int id, String name, TeamStatus status) {
         this.id = id;
         this.name = name;
         this.status = status;
@@ -33,14 +35,12 @@ public class Team {
         this.name = name;
     }
 
-    public String getStatus() {
+    public TeamStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TeamStatus status) {
         this.status = status;
     }
 
-    
-    
 }
