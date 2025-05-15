@@ -1,58 +1,42 @@
 package com.br.fiap.skill_match.model;
 
+// import java.time.LocalDate;
+// import java.time.LocalDateTime;
+// import java.time.OffsetDateTime;
+
+// import com.fasterxml.jackson.annotation.JsonFormat;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Feedback {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank(message = "O nome do usuário é obrigatório")
+    @Size(min = 3, max = 50, message = "O nome deve ter entre 3 e 50 caracteres")
     private String userName;
+
+    @NotBlank(message = "O comentário é obrigatório")
     private String comment;
 
-    // exemplo de 1 a 5 estrelas
+    @Min(value = 1, message = "A nota mínima é 1")
+    @Max(value = 5, message = "A nota máxima é 5")
     private int rating;
 
-    // Construtor Padrão
-    public Feedback() {}
 
-    // Construtor
-    public Feedback(int id, String userName, String comment, int rating) {
-        this.id = id;
-        this.userName = userName;
-        this.comment = comment;
-        this.rating = rating;
-    }
-
-    // Getters e Setters
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    
-    
 }
